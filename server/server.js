@@ -14,7 +14,7 @@ require('./config/passport')(passport);
 
 //connect server to mongoDB 
 mongoose.connect(
-  'mongodb123', 
+  'mongodb', 
   { useNewUrlParser: true, useCreateIndex: true, }
 ).then(() => console.log('MongoDB Connected'));
 mongoose.connection.on('error', console.error.bind(console, 'connection error:'));

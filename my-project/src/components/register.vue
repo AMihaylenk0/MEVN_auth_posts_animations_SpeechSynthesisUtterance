@@ -1,6 +1,7 @@
 <template>
+<div class="background">
     <div class="lul">    
-        <h2>Register</h2>    
+        <h1>Register</h1>    
         <form @submit.prevent="register">    
             <input type="text" name="email" v-model="email" placeholder="Email" /><br>    
             <input type="password" name="password" v-model="password" placeholder="Password"/><br>    
@@ -9,6 +10,7 @@
             <input type="submit" value="Sign Up" />    
         </form>    
     </div>
+</div> 
 </template>
 
 <script>
@@ -54,6 +56,12 @@ export default {
 </script>
 
 <style scoped>
+.background {
+    background: url(../assets/123.jpg)no-repeat center;
+    background-size: cover;
+    height: 100vh;
+    /* object-fit: cover; */
+  }
 .lul{
     display: flex;
     flex-direction: column;
@@ -61,9 +69,16 @@ export default {
     align-items: center;
     text-align: center;
     height: 100vh;
-    background-color: #B2AA8E;
+    /* background-color: #B2AA8E; */
     font-family: 'Lato', Arial, sans-serif;
     color: black;
+    background: rgba(2,2,2,0.6);
+    mix-blend-mode: multiply;
+
+}
+h1{
+    font-size: 15em;
+    color: white;
 }
 input{
     border: 2px solid red;
@@ -71,14 +86,17 @@ input{
     margin: 10px;
     text-align: center;
     outline: none;
-    background: #B2AA8E;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
 }
 
 ::placeholder{
-    color: black;
+    color: white;
 }
 input[type=submit]{
-    padding: 10px 600px;
+    padding: 50px 600px;
+    margin-bottom: 100px;
+    cursor: pointer;
 }
   /* Удаление бэкграунда после автозаполнения */
   @-webkit-keyframes autofill {

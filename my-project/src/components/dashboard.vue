@@ -1,18 +1,18 @@
 <template>
 <div class="body">
+    <canvas id="sandbox"></canvas>
     <div class="lul">    
         <h2>Dashboard</h2>    
-        <p ref="p">Name: {{ user.name }}</p>    
+        <p>Name: {{ user.name }}</p>    
         <p>Email: {{ user.email }}</p>   
         <button @click="logout">Logout</button> 
-         <div ref="canvas" id="canvas"></div>
     </div>
-    <canvas id="sandbox"></canvas>
 </div>
 </template>
 <script>
     import axios from "axios"
-    import Matter from "matter-js"    
+    // import Matter from "matter-js"    
+    // import * as matterDom from "matter-dom-plugin"    
     export default {    
         name: "Login",    
         data() {    
@@ -46,37 +46,12 @@
                 })    
             }    
         },    
-        mounted() {    
+        mounted() {
+            // Matter.use('matter-dom-plugin');    
             this.getUserData()    
-             const { canvas,p } = this.$refs
-            // const timeline = new TimelineMax({
-            // onComplete: () => timeline.restart()
-            // }) 
-           
+            //  const { canvas} = this.$refs
+                   
             // Matter JS
-            let Engine = Matter.Engine,
-            Render = Matter.Render,
-            World = Matter.World,
-            Bodies = Matter.Bodies;
-            // create an engine
-            let engine = Engine.create();
-            // create a renderer    
-            let render = Render.create({
-                element: canvas,
-                engine: engine,
-              });
-            // Css style
-            document.querySelector('canvas').style.cssText= "position:absolute;top:0;left:0;width:100%;height:100vh"
-            // create two boxes and a ground
-            let boxA = Bodies.rectangle(400, 200, 80, 80);
-            let boxB = Bodies.rectangle(450, 50, 80, 80);
-            let ground = Bodies.rectangle(400, 610*0.8, 810, 60, { isStatic: true });
-            // add all of the bodies to the world
-            World.add(engine.world, [boxA, boxB, ground,p]);
-            // run the engine
-            Engine.run(engine);
-            // run the renderer
-            Render.run(render);
 
             // BALLS
             const canvas2 = document.getElementById('sandbox');
@@ -91,9 +66,9 @@
             this.r = r;
             this.c = c;
             
-            this.dx = Math.floor(Math.random() * 100) + 1;
+            this.dx = Math.floor(Math.random() * 10) + 1;
             this.dx *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
-            this.dy = Math.floor(Math.random() * 100) + 1;
+            this.dy = Math.floor(Math.random() * 10) + 1;
             this.dy *= Math.floor(Math.random() * 2) == 1 ? 1 : -1;
             
             this.draw = function () {
@@ -130,7 +105,9 @@
             /* Adding balls on click */
             canvas2.addEventListener('click', function (e) {
             let r = Math.floor(Math.random() * 30) + 15;
-            balls.push(new Circle(e.clientX, e.clientY, r, 'blue'));
+            let rndColor = '#'+Math.floor(Math.random()*16777215).toString(16)
+            balls.push(new Circle(e.clientX, e.clientY, r, rndColor));
+            console.log('lul')
             });
 
             function Update () {
@@ -157,30 +134,22 @@
     text-align: center;
     height: 100vh;
     font-family: 'Lato', Arial, sans-serif;
-    color: white;
+    color: black;
+    position: absolute;
+    left: 0; 
+    top: 0;
+    width: 100%;
+    z-index: -1;
 } 
 h2{
-    /* transform: rotate(25deg); */
     margin-bottom: 20px;
 }
-.box { 
-  height: 60px; 
-  width: 60px; 
-  background: red; 
-}
 h2,p,button{
-    z-index: 2;
+    /* z-index: 2; */
     margin: 10px;
 }
-/* .canvas{
-    width: 100%;
-    height: 100vh;
-} */
-#sandbox{
-    width: 100vw;
-    height: 100vh;
-}
 .body{
-    overflow: hidden;
+    /* overflow: hidden; */
+    height: 100vh;
 }
 </style>

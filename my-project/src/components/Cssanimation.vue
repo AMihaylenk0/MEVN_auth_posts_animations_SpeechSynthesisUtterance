@@ -3,7 +3,7 @@
   <!-- SIDEBAR -->
   <div class="sidebar-container">
     <div id="sidebar" :style="[showSideBar ? {'width': '70%'}: {'width': '0px'}]">
-      <input v-model="query" id="input" 
+      <input v-model="query" id="input"
         placeholder="Search..."
         autocomplete="off"
         >
@@ -27,7 +27,7 @@
     <paperBird class="x"/>
     <TextAnimation6 class="x"/>
     <PopmotionJS class="x" />
-    <div class="x"><h1 class=" h1">shake effect!</h1></div>  
+    <div class="x"><h1 class=" h1">shake effect!</h1></div>
     <CanvasDraw class="x"/>
     <!-- <SpiralText class="x"/> -->
     <div class="x">
@@ -62,38 +62,38 @@ import SpiralText from './CssContainers/SpiralText'
 import TextAnimation5 from './CssContainers/TextAnimation5'
 
 export default {
-    components: {
-      TextAnimation,TextAnimation2,TextAnimation3,TextAnimation5,Cards,Mikey,TextAnimation4,SVGTextAnimation5,HoverText,Three,cube3d,paperBird,rotation,TextAnimation6,PopmotionJS,Cards3D,CanvasDraw,WPM,CanvasColor,SpiralText
-      },
-    data() {
-        return {
-        query: '',
-        items: [
-          { title: 'Cards', link: '/Cards' },
-          { title: 'anim1', link: '/anim1' },
-          { title: 'TextAnimation2', link: '/TextAnimation2' },
-          { title: 'TextAnimation3', link: '/TextAnimation3' },
-          { title: 'TextAnimation4', link: '/TextAnimation4' },
-          { title: 'TextAnimation5', link: '/TextAnimation5' },
-          { title: 'Three', link: '/Three' },
-          { title: 'cube3d', link: '/cube3d' },
-          { title: 'rotation', link: '/rotation' },
-          { title: 'Cards3D', link: '/Cards3D' },
-          { title: 'WPM', link: '/WPM' },
-          { title: 'CanvasColor', link: '/CanvasColor' },
-          { title: 'SpiralText', link: '/SpiralText' }
-        ],
-        showSideBar: false,
-        }
-    },
-    computed: {
-       computedList() {    /* Автокомплит */
-      // var vm = this 
-      return this.items.filter( (item) =>{
+  components: {
+    TextAnimation, TextAnimation2, TextAnimation3, TextAnimation5, Cards, Mikey, TextAnimation4, SVGTextAnimation5, HoverText, Three, cube3d, paperBird, rotation, TextAnimation6, PopmotionJS, Cards3D, CanvasDraw, WPM, CanvasColor, SpiralText
+  },
+  data () {
+    return {
+      query: '',
+      items: [
+        { title: 'Cards', link: '/Cards' },
+        { title: 'anim1', link: '/anim1' },
+        { title: 'TextAnimation2', link: '/TextAnimation2' },
+        { title: 'TextAnimation3', link: '/TextAnimation3' },
+        { title: 'TextAnimation4', link: '/TextAnimation4' },
+        { title: 'TextAnimation5', link: '/TextAnimation5' },
+        { title: 'Three', link: '/Three' },
+        { title: 'cube3d', link: '/cube3d' },
+        { title: 'rotation', link: '/rotation' },
+        { title: 'Cards3D', link: '/Cards3D' },
+        { title: 'WPM', link: '/WPM' },
+        { title: 'CanvasColor', link: '/CanvasColor' },
+        { title: 'SpiralText', link: '/SpiralText' }
+      ],
+      showSideBar: false
+    }
+  },
+  computed: {
+    computedList () { /* Автокомплит */
+      // var vm = this
+      return this.items.filter((item) => {
         return item.title.toLowerCase().indexOf(this.query.toLowerCase()) !== -1
       })
     }
-    }
+  }
 }
 </script>
 
@@ -104,7 +104,7 @@ export default {
     // justify-content: space-around;
     background-image: linear-gradient(to right top, #e5e528, #e3e827, #e2ea25, #e0ed24, #def023);
     //  width: 100%;
-     
+
   }
 
 .container {
@@ -118,8 +118,8 @@ width:75%;
 .y{
   margin-bottom: 40px;
   height: 500px;
-  width: 600px; 
-  border: 1px solid #C1C1C1; 
+  width: 600px;
+  border: 1px solid #C1C1C1;
   align-items: center;
   /* margin-top: 40px; */
 }
@@ -128,8 +128,8 @@ width:75%;
 .mikey{
 margin-bottom: 40px;
 height: 500px;
-width: 600px; 
-border: 1px solid #C1C1C1; 
+width: 600px;
+border: 1px solid #C1C1C1;
 align-items: center;
 justify-content: center;
 transition:  1s ease;
@@ -139,8 +139,11 @@ overflow: hidden;
 
 .mikey:hover{
   transform: rotate(360deg) scale(1.2);
+  overflow :hidden;
 }
-
+.mikey:hover ~ body {
+  overflow: hidden;
+}
 
 #title{
   display: flex;
@@ -155,8 +158,8 @@ overflow: hidden;
 .x {
 margin-bottom: 40px;
 height: 400px ;
-width: 600px; 
-border: 1px solid #C1C1C1; 
+width: 600px;
+border: 1px solid #C1C1C1;
 }
 
 /* .lul:nth-child(1) {
@@ -179,8 +182,8 @@ background-repeat: no-repeat;
   -ms-text-fill-color: transparent;
   background-clip: text;
   /* text-fill-color: transparent; */
-  background-image: linear-gradient(45deg, 
-                    #7794ff, 
+  background-image: linear-gradient(45deg,
+                    #7794ff,
                     #44107A,
                     #FF1361,
                     #FFF800);
@@ -194,7 +197,7 @@ background-repeat: no-repeat;
   10% { transform: skewX(-15deg); }
   15% { transform: skewX(15deg); }
   20% { transform: skewX(0deg); }
-  100% { transform: skewX(0deg); }  
+  100% { transform: skewX(0deg); }
 }
 // SIDEBAR
 
@@ -207,7 +210,7 @@ background-repeat: no-repeat;
   overflow:hidden;
   transition: width .35s;
   background-color:#2d2d2d;
-  border-bottom-right-radius: 150px; 
+  border-bottom-right-radius: 150px;
   box-shadow: 2px 0 4px rgba(0,0,0,0.5);
   height: 500px;
   display: flex;

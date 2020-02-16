@@ -26,64 +26,68 @@
   <i class="material-icons reload" @click="reload">cached</i>
 
 </body>
- 
+
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 
-  export default {
-    data: () => ({
-      valid: false,
+export default {
+  data: () => ({
+    valid: false,
 
-      post: '',
-      name: '',
-      title: '',
-      posts:[],
-    }),
-     methods: {
-      sendPost() {
-       let data = {
-         name : this.name,
-         title : this.title,
-         post : this.post
-       };
-       if(!data.name || !data.title || !data.post){
-         console.log('Fill all fields')
-       }
-      axios.post("http://localhost:5000/posts/create",data,{ withCredentials: true })    
-                    .then((response) => {    
-                        console.log(response.data.post)    
-                        console.log('its ok')
-                        // this.$router.push("/")  
-                        this.clear()
-                    })    
-                    .catch((errors) => {    
-                        console.log("damn")    
-                    }) 
-      },
-      clear() {
-        this.name = ''
-        this.post = ''
-        this.title = ''
-      },
-      getPosts(){
-          axios.get(`http://localhost:5000/posts/list`).then(response => {
-            this.posts = response.data.posts
-            console.log(this.posts)
-      });
-      },
-      reload(){
-        this.$router.go() 
-      },
-      listen(text){
-        speechSynthesis.speak(new SpeechSynthesisUtterance(text))
+    post: '',
+    name: '',
+    title: '',
+    posts: []
+  }),
+  methods: {
+    sendPost () {
+      let data = {
+        name: this.name,
+        title: this.title,
+        post: this.post
       }
+      if (!data.name || !data.title || !data.post) {
+        console.log('Fill all fields')
+      }
+      axios.post('http://localhost:5000/posts/create', data, { withCredentials: true })
+        .then((response) => {
+          // console.log(response.data.post)
+          // console.log('its ok')
+          // this.$router.push("/")
+          this.posts = [response.data.post, ...this.posts]
+          this.clear()
+          console.log(response.data)
+        })
+        .catch((errors) => {
+          console.log('damn')
+        })
+      // console.log(this.posts)
     },
-    mounted() {
-      this.getPosts()
+    clear () {
+      this.name = ''
+      this.post = ''
+      this.title = ''
     },
+    getPosts () {
+      axios.get(`http://localhost:5000/posts/list`).then(response => {
+        this.posts = response.data.posts
+        // console.log(this.posts)
+        console.log(response.data)
+      })
+    },
+    reload () {
+      this.$router.go()
+    },
+    listen (text) {
+      speechSynthesis.speak(new SpeechSynthesisUtterance(text))
+    }
+  },
+  mounted () {
+    this.getPosts()
   }
+}
 </script>
 
 <style scoped>
@@ -205,7 +209,6 @@ p{
   cursor: pointer;
   margin: 15px 15px 0 0;
 }
-
 
 /* Подключение Material Icons (потому что линк из html не подключается) */
 @font-face {

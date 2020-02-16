@@ -124,9 +124,9 @@ export default {
                 this.tl = new TimelineMax();
                 this.tl.to(intersects[i].object.scale, 1, {x: 2, ease: Expo.easeOut})
                 this.tl.to(intersects[i].object.scale, .5, {x: .5, ease: Expo.easeOut})
-                this.tl.to(intersects[i].object.position, .5, {x: (Math.random() - 0.5) * 10, ease: Expo.easeOut})
-                this.tl.to(intersects[i].object.position, .5, {y: (Math.random() - 0.5) * 10, ease: Expo.easeOut})
-                this.tl.to(intersects[i].object.rotation, .5, {y: Math.PI*.5, ease: Expo.easeOut}, "=-1.5")
+                this.tl.to(intersects[i].object.position, .5, {x: (Math.random() - 0.5) * 10, ease: Circ.easeIn})
+                // this.tl.to(intersects[i].object.position, .5, {y: (Math.random() - 0.5) * 10, ease: Circ.easeIn})
+                // this.tl.to(intersects[i].object.rotation, .5, {y: Math.PI*.5, ease: Expo.easeOut}, "=-1.5")
             }
         }
         

@@ -103,7 +103,8 @@
             balls.push(new Circle(x, y, r, c));
             }
             /* Adding balls on click */
-            canvas2.addEventListener('click', function (e) {
+            const body = document.querySelector('body');
+            body.addEventListener('click', function (e) {
             let r = Math.floor(Math.random() * 30) + 15;
             let rndColor = '#'+Math.floor(Math.random()*16777215).toString(16)
             balls.push(new Circle(e.clientX, e.clientY, r, rndColor));
@@ -139,7 +140,8 @@
     left: 0; 
     top: 0;
     width: 100%;
-    z-index: -1;
+    /* z-index: -1; */
+    user-select: none;  /* Обведение текста */
 } 
 h2{
     margin-bottom: 20px;
@@ -151,5 +153,6 @@ h2,p,button{
 .body{
     /* overflow: hidden; */
     height: 100vh;
+    background-color: yellow;
 }
 </style>

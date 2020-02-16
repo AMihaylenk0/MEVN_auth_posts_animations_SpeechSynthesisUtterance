@@ -34,6 +34,7 @@
 				</div>
 				</i>
 				<i class="material-icons" @click="logout">exit_to_app</i>
+			 <a href="https://github.com/WoodyWo?tab=repositories" target="_blank" ><img src="../assets/github.svg"></a>  
 			</ul>
 		</div>
 	</div>

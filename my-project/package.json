@@ -18,7 +18,7 @@
     "matter-dom-plugin": "^1.0.0",
     "matter-js": "^0.14.2",
     "popmotion": "^8.7.0",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "vue": "^2.5.2",
     "vue-pose": "^0.5.1",
     "vue-router": "^3.0.1",
